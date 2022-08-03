@@ -8,8 +8,6 @@ import java.util.List;
 public interface AgreementService {
 
 
-    Agreement ListByName(Agreement agreement_name);
-
     //Update  Agreement
     Agreement updateAgreement(Agreement agreement);
 
@@ -24,10 +22,10 @@ public interface AgreementService {
     Agreement SaveAgreement(Agreement agreement);
 
     //Delete By ID
-    Agreement DeleteAgrementByID(Long agreement_id);
+    void DeleteAgrementByID(Long agreement_id);
 
     //Delete By Name
-    Agreement DeleteAgrementByName(String agreement_name);
+    void DeleteAgrementByName(Agreement Agreement);
 
 
 }
