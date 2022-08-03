@@ -8,23 +8,24 @@ import java.util.List;
 
 @Service
 public interface UserService {
-    User ListByName(User user_name);
-
-    //Update  Agreement
-    User updateAgreement(User user);
+    User ListById(Long user_id);
 
     //List ALL Agreements
-    List<User> ListAllAgreement(User user);
+    List<User> ListAllUsers(User user);
+
+    //Update  Agreement
+    User updateUser(User user);
 
     //Number of Agreement
-    Long numberOfAgrements();
+    Long numberOfUsers();
 
     //Create a Agreement
-    User SaveAgreement(User user);
+    User SaveUser(User user);
 
     //Delete By ID
-    User DeleteAgrementByID(Long user_id);
+    void DeleteUserByID(Long user_id);
 
     //Delete By Name
-    User DeleteAgrementByName(String user_name);
+    void DeleteUserByName(User User);
+
 }

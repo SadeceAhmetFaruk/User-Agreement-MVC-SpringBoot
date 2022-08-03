@@ -8,42 +8,46 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-
 public class UserServiceImp implements UserService {
+    private final UserRepository userRepository;
+
+    public UserServiceImp(UserRepository userRepository) {
+        this.userRepository = userRepository;
+    }
 
 
     @Override
-    public User ListByName(User user_name) {
-        return null;
+    public User ListById(Long user_id) {
+       return  userRepository.findById(user_id).orElse(null);
     }
 
     @Override
-    public User updateAgreement(User user) {
-        return null;
+    public List<User> ListAllUsers(User user) {
+        return  userRepository.findAll();
     }
 
     @Override
-    public List<User> ListAllAgreement(User user) {
-        return null;
+    public User updateUser(User user) {
+        return userRepository.save(user);
     }
 
     @Override
-    public Long numberOfAgrements() {
-        return null;
+    public Long numberOfUsers() {
+        return userRepository.count();
     }
 
     @Override
-    public User SaveAgreement(User user) {
-        return null;
+    public User SaveUser(User user) {
+        return userRepository.save(user);
     }
 
     @Override
-    public User DeleteAgrementByID(Long user_id) {
-        return null;
+    public void DeleteUserByID( Long user_id) {
+         userRepository.deleteById(user_id);
     }
 
     @Override
-    public User DeleteAgrementByName(String user_name) {
-        return null;
+    public void DeleteUserByName(User user) {
+         userRepository.delete(user);
     }
 }

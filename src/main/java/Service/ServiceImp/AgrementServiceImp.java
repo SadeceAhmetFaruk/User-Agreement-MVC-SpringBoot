@@ -1,6 +1,7 @@
 package Service.ServiceImp;
 
 import Model.Agreement;
+import Repository.AgreementRepository;
 import Service.AgreementService;
 
 import java.util.List;
@@ -8,38 +9,40 @@ import java.util.List;
 public class AgrementServiceImp implements AgreementService
 {
 
-    @Override
-    public Agreement ListByName(Agreement agreement_name) {
-        return null;
+    private final AgreementRepository agreementRepository;
+
+    public AgrementServiceImp(AgreementRepository agreementRepository) {
+        this.agreementRepository = agreementRepository;
     }
+
 
     @Override
     public Agreement updateAgreement(Agreement agreement) {
-        return null;
+        return agreementRepository.save(agreement);
     }
 
     @Override
     public List<Agreement> ListAllAgreement(Agreement agreement) {
-        return null;
+        return agreementRepository.findAll();
     }
 
     @Override
     public Long numberOfAgrements() {
-        return null;
+        return agreementRepository.count();
     }
 
     @Override
     public Agreement SaveAgreement(Agreement agreement) {
-        return null;
+        return agreementRepository.save(agreement);
     }
 
     @Override
-    public Agreement DeleteAgrementByID(Long agreement_id) {
-        return null;
+    public void DeleteAgrementByID(Long agreement_id) {
+         agreementRepository.deleteById(agreement_id);
     }
 
     @Override
-    public Agreement DeleteAgrementByName(String agreement_name) {
-        return null;
+    public void DeleteAgrementByName(Agreement agreement) {
+        agreementRepository.delete(agreement);
     }
 }
